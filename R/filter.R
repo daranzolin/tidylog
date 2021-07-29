@@ -1,5 +1,6 @@
 #' @import dplyr
 #' @import tidyr
+#' @import hacksaw
 #' @export
 filter <- function(.data, ...) {
     log_filter(.data, .fun = dplyr::filter, .funname = "filter", ...)
@@ -93,6 +94,11 @@ slice_sample <- function(.data, ...) {
 #' @export
 drop_na <- function(data, ...) {
     log_filter(data, .fun = tidyr::drop_na, .funname = "drop_na", ...)
+}
+
+#' @export
+keep_na <- function(data, ...) {
+    log_filter(data, .fun = hacksaw::keep_na, .funname = "keep_na", ...)
 }
 
 log_filter <- function(.data, .fun, .funname, ...) {
